@@ -5,6 +5,8 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { getThemeProps } from "@mui/system";
+import NoProfile from "../assets/img/no-profile.png"
+import Profile from "../assets/img/profile.png"
 
 
 const Chat = (props)=> {
@@ -13,7 +15,11 @@ const Chat = (props)=> {
   return(
     <ListItem>
         <ListItemAvatar>
-          <Avatar alt="icon" src="/static/images/avatar/1.jpg" />
+          {isQuestion ? (
+            <Avatar alt="icon" src={Profile} />  
+          ):(
+            <Avatar alt="icon" src={NoProfile} />
+          )}
         </ListItemAvatar>
         <div className="p-chat__bubble">
           {props.text}
