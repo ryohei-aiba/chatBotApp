@@ -8,26 +8,17 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
-export default class Formdialog extends React.Component{
+export default class FormDialog extends React.Component{
   constructor(props){
     super(props);
     this.state = {
       open: false
     }
   }
-
-  handleClickOpen = () => {
-    this.setState({open: true});
-  };
-
-  handleClose = () => {
-    this.setState({open:false});
-  };
-  
   
   render() {
     return(
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={this.props.open} onClose={this.handleClose}>
         <DialogTitle>Subscribe</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -45,8 +36,8 @@ export default class Formdialog extends React.Component{
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={this.props.handleClose}>Cancel</Button>
+          <Button onClick={this.props.handleClose}>Subscribe</Button>
         </DialogActions>
       </Dialog>
     )
