@@ -34,6 +34,14 @@ export default class FormDialog extends React.Component{
   inputDescription = (e)=> {
     this.setState({description: e.target.value})
   }
+
+  submitForm = ()=> {
+    const name = this.state.name
+    const email = this.state.email
+    const description = this.state.description
+
+    
+  }
   
   render() {
     return(
@@ -55,7 +63,7 @@ export default class FormDialog extends React.Component{
         </DialogContent>
         <DialogActions>
           <Button variant="outlined" onClick={this.props.handleClose}>キャンセル</Button>
-          <Button variant="outlined" onClick={this.props.handleClose}>送信</Button>
+          <Button variant="outlined" onClick={this.props.submitForm}>送信</Button>
         </DialogActions>
       </Dialog>
     )
