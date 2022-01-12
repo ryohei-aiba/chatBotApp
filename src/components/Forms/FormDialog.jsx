@@ -47,7 +47,7 @@ export default class FormDialog extends React.Component{
             "お問い合わせ内容:\n" + description
     }
 
-    const url = "incoming webhookのURL"
+    const url = "incomig webhook URL"
 
     fetch(url, {
       method: 'POST',
