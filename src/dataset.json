@@ -1,80 +1,73 @@
 {
   "init": {
       "answers": [
-          {"content": "仕事を依頼したい", "nextId": "job_offer"},
-          {"content": "エンジニアのキャリアについて相談したい", "nextId": "consultant"},
-          {"content": "学習コミュニティについて知りたい", "nextId": "community"},
-          {"content": "お付き合いしたい", "nextId": "dating"}
+          {"content": "大学はどこ？", "nextId": "univ"},
+          {"content": "プログラミング歴は？", "nextId": "career"},
+          {"content": "趣味は？", "nextId": "hobby"},
+          {"content": "その他", "nextId": "other"}
       ],
-      "question": "こんにちは！🐯トラハックへのご用件はなんでしょうか？"
+      "question": "こんにちは！饗庭亮平です！質問はなんですか？"
   },
-  "job_offer": {
+  "univ": {
       "answers": [
-          {"content": "Webサイトを制作してほしい", "nextId": "website"},
-          {"content": "Webアプリを開発してほしい", "nextId": "webapp"},
-          {"content": "自動化ツールを作ってほしい", "nextId": "automation_tool"},
-          {"content": "その他", "nextId": "other_jobs"}
-      ],
-      "question": "どのようなお仕事でしょうか？"
-  },
-  "website": {
-      "answers": [
-          {"content": "問い合わせる", "nextId": "contact"},
+          {"content": "大学院には進学するの？", "nextId": "graduate"},
+          {"content": "研究室はどこ？", "nextId": "seminar"},
           {"content": "最初の質問に戻る", "nextId": "init"}
       ],
-      "question": "Webサイト細作についてですね。コチラからお問い合わせできます。"
+      "question": "同志社大学３年、理工学部機械システム工学科です。"
   },
-  "webapp": {
+  "graduate": {
       "answers": [
-          {"content": "問い合わせる", "nextId": "contact"},
           {"content": "最初の質問に戻る", "nextId": "init"}
       ],
-      "question": "Webアプリ開発についてですね。コチラからお問い合わせできます。"
+      "question": "はい！大学院で学びたいこともありますし、何より学ぶ時間が欲しいので、進学する予定です。"
   },
-  "automation_tool": {
+  "seminar": {
       "answers": [
-          {"content": "問い合わせる", "nextId": "contact"},
           {"content": "最初の質問に戻る", "nextId": "init"}
       ],
-      "question": "自動化ツール開発についてですね。コチラからお問い合わせできます。"
+      "question": "研究室にはまだ配属されていませんが、制御系の研究室に進む予定です。"
   },
-  "other_jobs": {
+  "career": {
       "answers": [
-          {"content": "問い合わせる", "nextId": "contact"},
+          {"content": "githubアカウントは？", "nextId": "https://github.com/ryohei-aiba"},
+          {"content": "何を勉強しているの？", "nextId": "study"},
           {"content": "最初の質問に戻る", "nextId": "init"}
       ],
-      "question": "その他についてですね。コチラからお問い合わせできます。"
+      "question": "五ヶ月ほどです。学ぶべきことが多くあると日々痛感しています。"
   },
-  "consultant": {
+  "study": {
+    "answers": [
+        {"content": "最初の質問に戻る", "nextId": "init"}
+    ],
+    "question": "現在はReact,JavaScript,TypeScriptの、主にフロントエンド側の学習をしています。Ruby on Railsも基礎的な部分は学習しました。今後はiOSアプリの開発もしていきたいです！"
+  },
+  "hobby": {
       "answers": [
-          {"content": "YouTubeで動画を見る", "nextId": "https://www.youtube.com/channel/UC-bOAxx-YOsviSmqh8COR0w"},
-          {"content": "学習コミュニティについて知りたい", "nextId": "community"},
+          {"content": "なんの本読んだ？", "nextId": "book"},
+          {"content": "どんな絵を描いているの？", "nextId": "drawing"},
           {"content": "最初の質問に戻る", "nextId": "init"}
       ],
-      "question": "トラハックは普段からYouTubeでキャリアについて発信しています。また、僕が運営するエンジニア向け学習コミュニティ内でも相談に乗っていますよ。"
+      "question": "服と読書、絵を描くことです。特に服への熱量は大分強いです！"
   },
-  "community": {
-      "answers": [
-          {"content": "どんな活動をしているの？", "nextId": "community_activity"},
-          {"content": "コミュニティに参加したい", "nextId": "https://torahack.web.app/community/"},
-          {"content": "最初の質問に戻る", "nextId": "init"}
-      ],
-      "question": "2020年3月から学習コミュニティを始めました！🎉Webエンジニアへの転職を目指す人向けに、プログラミングを教えたりキャリアの相談に乗っています。"
+  "book": {
+    "answers": [
+        {"content": "最初の質問に戻る", "nextId": "init"}
+    ],
+    "question": "最近だとフランツ・カフカの「変身」を読みました。ハッピーエンドともバッドエンドとも取れる不思議な作品です。"
   },
-  "community_activity": {
-      "answers": [
-          {"content": "さらに詳細を知りたい", "nextId": "https://youtu.be/tIzE7hUDbBM"},
-          {"content": "コミュニティに参加したい", "nextId": "https://torahack.web.app/community/"},
-          {"content": "最初の質問に戻る", "nextId": "init"}
-      ],
-      "question": "フロントエンド向けの教材の提供、キャリアや勉強法に関するメルマガの配信、週1のオンライン作業会などを開催しています！\n詳細はYouTube動画で紹介しています。"
+  "drawing": {
+    "answers": [
+        {"content": "最初の質問に戻る", "nextId": "init"}
+    ],
+    "question": "最近始めたので、まずは基礎力を上げるために模写とデッサンをしています。一区切りついたらデジタルに移行して、Tシャツにプリントするデザインを描こうと思っています！"
   },
-  "dating": {
-      "answers": [
-          {"content": "DMする", "nextId": "https://twitter.com/torahack_"},
-          {"content": "最初の質問に戻る", "nextId": "init"}
-      ],
-      "question": "まずは一緒にランチでもいかがですか？DMしてください😘"
+  "other": {
+    "answers": [
+        {"content": "問い合わせる", "nextId": "contact"},
+        {"content": "最初の質問に戻る", "nextId": "init"}
+    ],
+    "question": "ご用件がございましたら、下のボタンからお問い合わせください。"
   }
 }
 

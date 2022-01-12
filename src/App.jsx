@@ -3,7 +3,7 @@ import "./assets/styles/style.css"
 import { AnswersList, Chats } from './components/index';
 import FormDialog from './components/Forms/FormDialog';
 import { db } from './Firebase/index'; 
-import { snapshotEqual } from '@firebase/firestore';
+
 
 export default class App extends React.Component {
   constructor(props){
