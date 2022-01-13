@@ -21,7 +21,6 @@ export default class App extends React.Component {
   }
 
   displayNextQuestion = (nextQuestionId)=> {
-    console.log(this.state.dataset)
     const chats = this.state.chats
     chats.push({
       text: this.state.dataset[nextQuestionId].question,
