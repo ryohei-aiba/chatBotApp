@@ -5,6 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextInput from './TextInput';
+import { WEBHOOK_URL } from "../../webhookconfig";
 
 const FormDialog = (props)=> {
 
@@ -13,15 +14,15 @@ const FormDialog = (props)=> {
   const [description,setDescription] = useState([""]);
 
   const inputName = useCallback((e)=> {
-    setName({name: e.target.value})
+    setName(e.target.value)
   },[setName])
 
   const inputEmail = useCallback((e)=> {
-    setEmail({email: e.target.value})
+    setEmail(e.target.value)
   },[setEmail])
 
   const inputDescription = useCallback((e)=> {
-    setDescription({description: e.target.value})
+    setDescription(e.target.value)
   },[setDescription])
 
   const submitForm = ()=> {
@@ -33,9 +34,7 @@ const FormDialog = (props)=> {
             "お問い合わせ内容:\n" + description
     }
 
-    const url = "a"
-
-    fetch(url, {
+    fetch(WEBHOOK_URL, {
       method: 'POST',
       body: JSON.stringify(payload)
     }).then(()=> {
