@@ -25,26 +25,50 @@ const FormDialog = (props)=> {
     setDescription(e.target.value)
   },[setDescription])
 
-  const submitForm = ()=> {
-
-    const payload = {
-      text: "お問い合わせがありました。\n" +
-            "お名前: " + name + "\n" +
-            "Email: " + email + "\n" +
-            "お問い合わせ内容:\n" + description
-    }
-
-    fetch(WEBHOOK_URL, {
-      method: 'POST',
-      body: JSON.stringify(payload)
-    }).then(()=> {
-      alert("送信が完了しました。")
-      setName("")
-      setEmail("")
-      setDescription("")
-      return props.handleClose()
-    })
+  const validateEmailFormat = ()=> {
+    const regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    return regex.test(email)
   }
+
+  const validateRequiredInput = (...args) => {
+    let isBlank = false;
+    for (let i = 0; i < args.length; i++) {
+        if (args[i] === "") {
+            isBlank = true;
+        }
+    }
+    return isBlank
+  };
+
+  const submitForm = ()=> {
+    const isBlank = validateRequiredInput(name, email, description)
+    const isValidEmail = validateEmailFormat(email)
+
+    if (isBlank){
+      alert("必須入力欄が空欄です。")
+      return false
+    }else if(!isValidEmail){
+      alert("メールアドレスの書式が異なります。")
+    }else{
+      const payload = {
+        text: "お問い合わせがありました。\n" +
+              "お名前: " + name + "\n" +
+              "Email: " + email + "\n" +
+              "お問い合わせ内容:\n" + description
+      }
+
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      }).then(()=> {
+        alert("送信が完了しました。")
+        setName("")
+        setEmail("")
+        setDescription("")
+        return props.handleClose()
+      })
+    }
+  };  
   
 
   return(
