@@ -1,44 +1,30 @@
-import React from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextInput from './TextInput';
 
+const FormDialog = (props)=> {
 
-export default class FormDialog extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      name: "",
-      email: "",
-      description: ""
-    }
+  const [name,setName] = useState([""]);
+  const [email,setEmail] = useState([""]);
+  const [description,setDescription] = useState([""]);
 
-    this.inputName = this.inputName.bind(this)
-    this.inputEmail = this.inputEmail.bind(this)
-    this.inputDescription = this.inputDescription.bind(this)
-  }
+  const inputName = useCallback((e)=> {
+    setName({name: e.target.value})
+  },[setName])
 
-  inputName = (e)=> {
-    this.setState({name: e.target.value})
-  }
+  const inputEmail = useCallback((e)=> {
+    setEmail({email: e.target.value})
+  },[setEmail])
 
-  inputEmail = (e)=> {
-    this.setState({email: e.target.value})
-  }
+  const inputDescription = useCallback((e)=> {
+    setDescription({description: e.target.value})
+  },[setDescription])
 
-  inputDescription = (e)=> {
-    this.setState({description: e.target.value})
-  }
-
-  submitForm = ()=> {
-    const name = this.state.name
-    const email = this.state.email
-    const description = this.state.description
+  const submitForm = ()=> {
 
     const payload = {
       text: "お問い合わせがありました。\n" +
@@ -47,45 +33,45 @@ export default class FormDialog extends React.Component{
             "お問い合わせ内容:\n" + description
     }
 
-    const url = ""
+    const url = "a"
 
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(payload)
     }).then(()=> {
       alert("送信が完了しました。")
-      this.setState({
-        name: "",
-        email: "",
-        description: ""
-      })
-      return this.props.handleClose()
+      setName("")
+      setEmail("")
+      setDescription("")
+      return props.handleClose()
     })
   }
   
-  render() {
-    return(
-      <Dialog open={this.props.open} onClose={this.handleClose}>
-        <DialogTitle>お問い合わせフォーム</DialogTitle>
-        <DialogContent>
-            <TextInput
-              label={"お名前(必須)"} multiline={false} rows={1}
-              value ={this.state.name} type={"text"} onChange={this.inputName}
-            />
-            <TextInput
-              label={"メールアドレス(必須)"} multiline={false} rows={1}
-              value ={this.state.email} type={"email"} onChange={this.inputEmail}
-            />
-            <TextInput
-              label={"お問い合わせ内容(必須)"} multiline={true} rows={5}
-              value ={this.state.description} type={"text"} onChange={this.inputDescription}
-            />
-        </DialogContent>
-        <DialogActions>
-          <Button variant="outlined" onClick={this.props.handleClose}>キャンセル</Button>
-          <Button variant="outlined" onClick={this.submitForm}>送信</Button>
-        </DialogActions>
-      </Dialog>
-    )
-  }
+
+  return(
+    <Dialog open={props.open} onClose={props.handleClose}>
+      <DialogTitle>お問い合わせフォーム</DialogTitle>
+      <DialogContent>
+          <TextInput
+            label={"お名前(必須)"} multiline={false} rows={1}
+            value ={name} type={"text"} onChange={inputName}
+          />
+          <TextInput
+            label={"メールアドレス(必須)"} multiline={false} rows={1}
+            value ={email} type={"email"} onChange={inputEmail}
+          />
+          <TextInput
+            label={"お問い合わせ内容(必須)"} multiline={true} rows={5}
+            value ={description} type={"text"} onChange={inputDescription}
+          />
+      </DialogContent>
+      <DialogActions>
+        <Button variant="outlined" onClick={props.handleClose}>キャンセル</Button>
+        <Button variant="outlined" onClick={submitForm}>送信</Button>
+      </DialogActions>
+    </Dialog>
+  )
+
 };
+
+export default FormDialog;
